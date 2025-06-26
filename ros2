@@ -1,0 +1,19 @@
+//小海龟模拟器
+ros2 run turtlesim trutlesim_node
+
+ros2 run turtlesim turtle_teleop_key
+
+rqt
+
+
+
+//Linux基本操作
+pwd //查看当前终端的目录
+cd ~  //到根目录
+ls  //当前目录下的文件
+mkdir chapt1 //创建一个文件夹
+touch hello_world.txt //创建一个文件
+nano hello_world.txt  //修改一个文件
+cat  hello_world.txt   //打印文本内容
+rm  hello_world.txt   //删除一个文件
+ros2 run --help //找提示
