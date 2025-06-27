@@ -17,3 +17,75 @@ nano hello_world.txt  //修改一个文件
 cat  hello_world.txt   //打印文本内容
 rm  hello_world.txt   //删除一个文件
 ros2 run --help //找提示
+
+
+code ./  //在当前文件夹中打开vscode
+
+
+//使用python编写程序
+//文件名 hello_world.py
+print('HELLO WORLD!')
+//ctrl+s 保存文件
+//选择自动保存
+python3 hello_world.py
+//打印HELLO WORLD!
+whereis python3
+//寻找python3
+chmod a+x hello_world.py
+// 增加可执行文件的权限
+#!/usr/bin/python3
+./hello_world.py
+//打印HELLO WORLD!
+
+
+//使用c++编写程序
+//文件名 hello_world.cpp
+#include "iostream"
+int main()
+{
+  std::cout<< "HELLO WORLD!" <<std::endl; 
+  return 0;
+}
+
+g++  hello_world.cpp
+//编译文件 生成a.out
+./a.out
+//执行文件
+//打印HELLO WORLD!
+
+
+//新建文件CMakeLists.txt
+cmake_mimimum_required(VERSION 3.8)
+project(HELLOWORLD)
+add_executable(learn_cmake  hello_world.cpp)
+cmake .
+//生成Makefile
+make
+./learn_cmake
+//打印HELLO WORLD!
+
+
+//Linux环境变量
+echo hello_world
+//打印 hello_world
+echo $ROS_VERSION
+//打印ROS版本信息
+echo $ROS_DISTRO 
+//打印eos发行版本
+printenv
+//打印所有环境变量
+ros2 run turtlesim turtlesim_node
+AMENT_PREFIX_PATH=/opt/ros/humble
+//1.AMENT_PREFIX_PATH
+//2.lib/package_name/exacuteable
+//功能包名字 turtlesim 可执行文件名字 turtlesim_node
+printenv | grep AMENT
+$AMENT_PREFIX_PATH/lib/turtlesim/turtlesim_node
+//我们通过自己拼接环境变量进行执行程序
+echo $AMENT_PREFIX_PATH/lib/turtlesim/turtlesim_node
+//打印出路径
+/opt/ros/humble/lib/turtlesim/turtlesim_node
+export AMENT_PREFIX_PATH=/opt/ros/
+//修改环境变量 
+//默认脚本：~/.bashrc
+//以.开头的文件是隐藏文件
