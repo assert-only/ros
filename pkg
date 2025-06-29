@@ -1,0 +1,29 @@
+//创建一个功能包
+ros2 pkg create --build-type ament_python --license Apache-2.0 demo_pyhton_pkg
+
+//新建一个文件 python_node.py
+import rclpy
+from rclpy.node import Node
+
+def main():
+    rclpy.init() #初始化
+    node = Node('python_node')
+    node.get_logger().info('你好 Python ')
+    rclpy.spin(node)
+    rclpy.shutdowm()
+
+//在setup.py中  'console_scripts':后
+'python_node = demo_pyhton_pkg.python_node:main'
+
+//在package.xml中 <license>后
+<depend>rclpy</depend>
+
+//构建功能包
+colcon build
+
+//在setup.bash中的终端中
+printenv | grep PYTHON
+//更新
+source install/setup.bash 
+printenv | grep PYTHON
+ros2 run demo_python_pkg python_node
