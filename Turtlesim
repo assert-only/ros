@@ -1,0 +1,7 @@
+ros2 run trutlesim turtlesim_node
+ros2 node list
+ros2 node info /turtlesim
+ros2 topic echo /turtlel/pose
+ros2 tpoic info /turtlel/cmd_vel
+ros2 interface show geomtry_msgs/msg/Twist
+ros2 topic pub /turtlel/cmd_vel geomtry_msgs/msg/Twist "{linear: {x: 0.5,y: 0.0},angular: {z: 0.0}}"
