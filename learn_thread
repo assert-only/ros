@@ -46,13 +46,21 @@ class Download
 private:
 
 public:
-    void downlaod(const std::string& host,const std::string& path,const std::function<void(const std::string &,const std::string &)>&callback_world_count);
+    void downlaod(const std::string& host,const std::string& path,const std::function<void(const std::string &,const std::string &)>&callback_word_count);
     {
-        
+        std::cout<<"线程"<<std::this_thread::get_id()<<std::endl;
+        httplib::Client client(host);
+        auto response = client..Get(path);
+        if(response && response->status==200)
+        {
+            callback_word_count(path,response->body);
+        }
     };
-    void start_downlaod(const std::string& host,const std::string& path,const std::function<void(const std::string &,const std::string &)>&callback_world_count);
+    void start_downlaod(const std::string& host,const std::string& path,const std::function<void(const std::string &,const std::string &)>&callback_word_count);
     {
-        
+        auto download_fun = std::bind(&Download::downlaod,thi,std::placeholders::_1,std::placeholders::_2,std::placeholders::_3);
+        std::thread thraed(download_fun,host,path,callback_word_count);
+        thread_detach();
     };
 
 }
@@ -63,5 +71,10 @@ int main()
   auto world_count = [](const std::string &path,const std::string &result) -> void{
       std::cout<< "下载完成"<< path << result.length() <<result.substr(0,5) << std::endl;
   };
-  d.
+  d.start_download("网站","novel1.txt",word_count);
+  d.start_download("网站","novel2.txt",word_count);
+  d.start_download("网站","novel3.txt",word_count);
+
+  std::this_thread::sleep_for(std::chrono::milliseconds(1000*10)); //休眠10s
+  return 0;
 }
