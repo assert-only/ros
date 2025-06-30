@@ -1,0 +1,67 @@
+//创建文件learn_threading.py
+import threading
+import requests  //sudo apt install python3-requests
+
+class download:
+    def download(self,url,callback_world_count):
+        print(f'线程:{threading.get_ident()} 开始下载:{url}')
+        response = requests.get(url)
+        response.encoding = 'utf-8'
+        callback_world_count(url,response.text)
+
+    def start_download(self,url,callback_world_count):
+        thread = threading.Thread(target=self.download,args=(url,callback_world_count))
+        thread.start()
+
+def world_count(url,result):
+
+    print(f"{url}:{len(result)->{result[:5]}")
+
+def main():
+    download = Download()
+    downlaod.start_download('网站',world_count)
+    downlaod.start_download('网站',world_count)
+    downlaod.start_download('网站',world_count)
+
+
+echo "xxxxxxxxxxxxxxxxxxxxx" > novel1.txt
+echo "xxxxxxxxx55555555xxxx" > novel2.txt
+echo "xxx77777777777777777x" > novel3.txt
+python3 -m http.server
+
+
+
+//把这个网站下载下来 gitee.com/ohhuo/cpp-httplib.git
+//在CMakeLists.txt中# find_package后加include_directories(include)
+
+//
+#include<iostream>
+#include<thread>
+#include<chrono> //时间相关
+#include<functional> //函数包装器
+#include "cpp-httplib/httplib.h" //下载相关
+
+class Download
+{
+private:
+
+public:
+    void downlaod(const std::string& host,const std::string& path,const std::function<void(const std::string &,const std::string &)>&callback_world_count);
+    {
+        
+    };
+    void start_downlaod(const std::string& host,const std::string& path,const std::function<void(const std::string &,const std::string &)>&callback_world_count);
+    {
+        
+    };
+
+}
+
+int main()
+{
+  auto d = Download();
+  auto world_count = [](const std::string &path,const std::string &result) -> void{
+      std::cout<< "下载完成"<< path << result.length() <<result.substr(0,5) << std::endl;
+  };
+  d.
+}
